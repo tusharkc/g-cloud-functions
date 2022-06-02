@@ -96,7 +96,7 @@ const setDataToDb = async () => {
             admin
               .database(app)
               .ref(`/campaigns/${runningCampaigns?.asset_ids[0]}`)
-              .set(runningCampaign);
+              .set({ runningCampaign: runningCampaign });
           }
         }
       } catch (error) {
