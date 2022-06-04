@@ -20,8 +20,6 @@ const runFunc = () => {
           .child("runningCampaign")
           .val();
 
-        console.log(singularCampaignObj);
-
         if (
           Date.parse(`${singularCampaignObj.lastRoll}Z`) +
             singularCampaignObj.loopTimeSeconds * 1000 -
@@ -69,6 +67,7 @@ const setDataToDb = async () => {
             const response = await axios.get(
               `https://wax.api.atomicassets.io/atomicassets/v1/assets/${runningCampaigns?.asset_ids[0]}`
             );
+
             const runningCampaign = {
               joinedAccounts: runningCampaigns?.accounts || [],
               assetId: response.data?.data?.asset_id,
