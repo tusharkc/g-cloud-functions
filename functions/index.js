@@ -16,9 +16,7 @@ const runFunc = () => {
     .ref("/campaigns")
     .once("value", (snapshot) => {
       snapshot.forEach((allRunningCampaigns) => {
-        const singularCampaignObj = allRunningCampaigns
-          .child("runningCampaign")
-          .val();
+        const singularCampaignObj = allRunningCampaigns.val();
 
         if (
           Date.parse(`${singularCampaignObj.lastRoll}Z`) +
@@ -28,7 +26,7 @@ const runFunc = () => {
         ) {
           admin
             .database(app)
-            .ref(`/campaigns/${singularCampaignObj?.assetId}`)
+            .ref(`/campaigns/${singularCampaignObj?.route}`)
             .remove();
         }
       });
